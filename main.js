@@ -4,8 +4,11 @@ const time = document.getElementById('time'),
     aName = document.getElementById('aName'),
     focus = document.getElementById('focus');
 
+// Option
+const showAmPm = true;
 //Show Time
 function showTime() {
+    // let today = new Date(2022, 31, 05, 20, 33, 30),  // Test
     let today = new Date(),
         hour = today.getHours(),
         min = today.getMinutes(),
@@ -19,7 +22,7 @@ function showTime() {
     hour = hour % 12 || 12;
 
     // Output Time
-    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} ${showAmPm ? amPm : ''}`;
 
     setTimeout(showTime, 1000);
 
@@ -32,6 +35,7 @@ function addZero(n) {
 
 // Set Background and Greeting
 function setBackGroundAndGreeting() {
+    // let today = new Date(2022, 31, 05, 20, 33, 30),  // Test
     let today = new Date(),
         hour = today.getHours();
 
@@ -43,6 +47,8 @@ function setBackGroundAndGreeting() {
         //Afternoon
         document.body.style.backgroundImage = "url('../images/afternoon.jpg')";
         greeting.textContent = 'Good Afternoon';
+        // greeting.id('greeting') = 'white';
+        document.body.style.color = 'white';
     } else {
         //Evening
         document.body.style.backgroundImage = "url('../images/evening.jpg')";
